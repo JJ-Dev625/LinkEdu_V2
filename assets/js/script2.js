@@ -70,12 +70,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- 4. DIAPORAMA D'ARRIÈRE-PLAN ---
   const slideshowContainer = document.getElementById("app-slideshow");
   const imagesList = [
-    "./assets/images/etu1.jpg",
-    "./assets/images/etu2.jpg",
-    "./assets/images/el1.jpg",
-    "./assets/images/el2.jpg",
-    "./assets/images/ens.jpg",
-    "./assets/images/pri1.jpg",
+    "assets/images/etu1.jpg",
+    "assets/images/etu2.jpg",
+    "assets/images/el1.jpg",
+    "assets/images/el2.jpg",
+    "assets/images/ens.jpg",
+    "assets/images/pri1.jpg",
   ];
 
   if (slideshowContainer) {
