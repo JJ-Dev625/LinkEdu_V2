@@ -1,0 +1,266 @@
+/* ==========================================================================
+   0. PANNEAU DE SIMULATION (BARRE COMMUNE POUR LE JURY)
+   ========================================================================== */
+.demo-control-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1E2937;
+  color: #94A3B8;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  z-index: 9999;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.demo-btn {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-free { background-color: #10B881; color: white; }
+.btn-free:hover { background-color: #059669; }
+.btn-locked { background-color: #EF4444; color: white; }
+.btn-locked:hover { background-color: #DC2626; }
+
+/* ==========================================================================
+   1. STRUCTURE DU SMARTPHONE MOCKUP
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #1F2937;
+  background-color: #F9FAFB;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding-top: 50px;
+}
+
+.dashboard-container {
+  width: 100%;
+  max-width: 450px;
+  padding: 24px 20px 100px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Header Rubrique */
+.courses-header h2 {
+  font-size: 24px;
+  color: #1F3962;
+  font-weight: 800;
+}
+
+.courses-header .subtitle {
+  font-size: 13px;
+  color: #6B7280;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   2. SYSTEME D'ONGLETS DE FILTRAGE
+   ========================================================================== */
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.filter-btn {
+  border: 1px solid #E5E7EB;
+  background-color: #FFFFFF;
+  color: #4B5563;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.filter-btn.active {
+  background-color: #1F3962;
+  color: #FFFFFF;
+  border-color: #1F3962;
+}
+
+/* ==========================================================================
+   3. DESIGN DES CARTES DE LA BIBLIOTHÈQUE
+   ========================================================================== */
+.library-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.course-card {
+  display: flex;
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+  height: 125px;
+}
+
+/* Zone d'aperçu gauche */
+.card-preview {
+  width: 110px;
+  min-width: 110px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-preview { background: linear-gradient(135deg, #4F46E5, #3B82F6); }
+.algl-bg { background: linear-gradient(135deg, #F59E0B, #D97706); }
+.pdf-preview { background: linear-gradient(135deg, #EF4444, #B91C1C); }
+.net-bg { background: linear-gradient(135deg, #10B881, #047857); }
+
+.format-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 8px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: white;
+}
+.badge-video { background-color: rgba(0, 0, 0, 0.4); }
+.badge-pdf { background-color: rgba(255, 255, 255, 0.25); }
+
+.play-icon {
+  width: 32px;
+  height: 32px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #1F3962;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  padding-left: 2px;
+}
+
+.doc-file-icon {
+  font-size: 32px;
+  color: white;
+}
+
+/* Infos de la carte */
+.card-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.course-tag {
+  font-size: 10px;
+  font-weight: 700;
+  color: #10B881;
+  text-transform: uppercase;
+}
+
+.card-body h3 {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1F2937;
+  line-height: 1.3;
+  margin: 2px 0;
+}
+
+.course-author {
+  font-size: 11px;
+  color: #6B7280;
+}
+
+/* Zone actions */
+.card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.action-link {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1F3962;
+  text-decoration: none;
+}
+
+.download-icon-btn {
+  text-decoration: none;
+  font-size: 14px;
+  background-color: #F3F4F6;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #4B5563;
+}
+
+/* ==========================================================================
+   4. NAVIGATION BASSE ET BANDEAUX (MÊMES STYLES ACCUEIL)
+   ========================================================================== */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 450px; background-color: #FFFFFF;
+  display: flex; padding: 12px 0; border-top: 1px solid #E5E7EB; z-index: 100;
+}
+.nav-item { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #9CA3AF; gap: 4px; width: 25%; }
+.nav-icon { font-size: 20px; }
+.nav-label { font-size: 11px; font-weight: 500; }
+.nav-item.active { color: #10B881; }
+
+.restriction-banner {
+  background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+  border: 1px solid #FCD34D; border-radius: 12px; padding: 14px 16px;
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+}
+.banner-text strong { font-size: 13px; color: #92400E; display: block; }
+.banner-text p { font-size: 11px; color: #B45309; }
+.timer-highlight { font-family: monospace; font-weight: 800; background-color: #1F3962; color: white; padding: 2px 6px; border-radius: 4px; }
+.banner-btn { background-color: #D97706; color: white; text-decoration: none; padding: 8px 14px; font-size: 12px; font-weight: 700; border-radius: 8px; white-space: nowrap; }
+
+/* ==========================================================================
+   5. LOCKING OVERLAYS STYLES
+   ========================================================================== */
+.locked { position: relative; }
+.locked > *:not(.locked-overlay) { filter: blur(6px) !important; opacity: 0.3 !important; pointer-events: none; }
+.locked-overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(255, 255, 255, 0.1); z-index: 5;
+  display: flex; justify-content: center; align-items: center; border-radius: 14px; cursor: pointer;
+}
+.locked-overlay span { background-color: #1F3962; color: #FFFFFF; font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }

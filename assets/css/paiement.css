@@ -1,0 +1,509 @@
+/* ==========================================================================
+   1. CONFIGURATION DES VARIABLES & DESIGN SYSTEM
+   ========================================================================== */
+:root {
+  --primary-vert: #10B881;
+  --dark-bleu: #1F3962;
+  --neutral-gray: #9CA3AF;
+  --dark-gray: #4B5563;
+  --white: #FFFFFF;
+  --black: #050505;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: var(--dark-bleu);
+  color: var(--black);
+  height: 100vh;
+  height: 100dvh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden; /* Blocage absolu du scroll */
+}
+
+/* ==========================================================================
+   2. DIAPORAMA D'ARRIÈRE-PLAN
+   ========================================================================== */
+.background-slideshow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(31, 57, 98, 0.50); 
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  z-index: -1;
+}
+
+/* ==========================================================================
+   3. HEADER / FOOTER ET BARRE DE PROGRESSION
+   ========================================================================== */
+.app-header {
+  background-color: var(--white);
+  border-bottom: 2px solid rgba(16, 184, 129, 0.15);
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  flex-shrink: 0;
+}
+
+.app-logo {
+  height: 38px;
+  width: auto;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.progress-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 55%;
+}
+
+.progress-text {
+  font-size: 0.65rem;
+  color: var(--dark-gray);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: #E5E7EB;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 100%; /* Étape 3 sur 3 */
+  height: 100%;
+  background-color: var(--primary-vert);
+}
+
+.app-footer {
+  background-color: rgba(15, 23, 42, 0.95);
+  color: var(--neutral-gray);
+  text-align: center;
+  padding: 8px;
+  font-size: 0.7rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   4. CONTENEUR PRINCIPAL ULTRA COMPACT SANS SCROLL
+   ========================================================================== */
+.main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 4px 16px;
+  max-width: 420px;
+  margin: 0 auto;
+  width: 100%;
+  overflow: hidden;
+  gap: 6px;
+}
+
+.welcome-section {
+  text-align: center;
+  color: var(--white);
+}
+
+.welcome-section h1 {
+  font-size: 1.25rem;
+  margin-bottom: 0px;
+  font-weight: 700;
+}
+
+.welcome-section .text-brand {
+  color: var(--primary-vert);
+}
+
+.welcome-section p {
+  font-size: 0.72rem;
+  line-height: 1.1;
+  opacity: 0.95;
+}
+
+/* ==========================================================================
+   5. CONTENEUR EN VERRE DÉPOLI (GLASSMORPHISM) & COMPOSANTS
+   ========================================================================== */
+.auth-section {
+  background-color: rgba(255, 255, 255, 0.16); 
+  border-radius: 16px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Bloc d'option réinscription */
+.reinscription-box {
+  background-color: rgba(255, 255, 255, 0.12);
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.matricule-wrapper {
+  display: none;
+  margin-top: 6px;
+  flex-direction: column;
+  gap: 4px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.btn-verify {
+  background-color: var(--dark-bleu);
+  color: var(--white);
+  padding: 5px;
+  font-size: 0.7rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Récapitulatif financier compact */
+.payment-summary {
+  background-color: rgba(15, 23, 42, 0.35);
+  border-radius: 8px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.payment-summary h4 {
+  font-size: 0.75rem;
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+#summary-badge {
+  font-size: 0.65rem;
+  font-weight: normal;
+  color: var(--neutral-gray);
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.80);
+  margin-bottom: 2px;
+}
+
+.summary-item .price {
+  font-weight: 600;
+  color: var(--white);
+}
+
+.summary-item.total {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 4px;
+  margin-top: 4px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--white);
+}
+
+.summary-item.total .price {
+  color: var(--primary-vert);
+}
+
+/* ==========================================================================
+   6. OPTIONS OPÉRATEURS ET ENTRÉES TELEPHONE
+   ========================================================================== */
+.payment-method-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.method-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.method-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.provider-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+}
+
+.provider-card:hover, .provider-card.active {
+  border-color: var(--primary-vert);
+  background-color: rgba(16, 184, 129, 0.12);
+}
+
+.provider-card.active {
+  box-shadow: 0 0 0 2px rgba(16, 184, 129, 0.25);
+}
+
+.method-logo {
+  height: 24px;
+  width: auto;
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+.provider-card span {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.input-group label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.75rem;
+}
+
+.input-group input, .matricule-wrapper input {
+  width: 100%;
+  padding: 6px 10px 6px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.30);
+  border-radius: 6px;
+  font-size: 0.78rem;
+  outline: none;
+  color: var(--white);
+  background-color: rgba(255, 255, 255, 0.15);
+  box-sizing: border-box;
+}
+
+.input-group input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ==========================================================================
+   7. BOUTONS DE COMMANDE FINALE & LIENS
+   ========================================================================== */
+.actions-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.btn-pay {
+  width: 100%;
+  background-color: var(--primary-vert);
+  color: var(--white);
+  border: none;
+  padding: 9px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(16, 184, 129, 0.2);
+}
+
+.btn-pay:hover {
+  background-color: #0D9668;
+}
+
+.btn-back {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--white);
+  text-decoration: none;
+  text-align: center;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.btn-back:hover {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   8. INTERFACE DE LA MODALE PIN SÉCURISÉE
+   ========================================================================== */
+.payment-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.payment-overlay.hidden {
+  display: none !important;
+}
+
+.modal-content {
+  background: var(--white);
+  padding: 24px;
+  border-radius: 16px;
+  width: 85%;
+  max-width: 320px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  animation: popCheck 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.pin-entry-form {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#pin-input {
+  letter-spacing: 12px;
+  text-align: center;
+  font-size: 20px;
+  padding: 8px;
+  width: 60%;
+  margin-bottom: 12px;
+  border: 2px solid #D1D5DB;
+  border-radius: 8px;
+  outline: none;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.btn-modal-cancel, .btn-modal-confirm {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-modal-cancel {
+  background-color: #EF4444;
+  color: var(--white);
+}
+
+.btn-modal-confirm {
+  background-color: var(--primary-vert);
+  color: var(--white);
+}
+
+/* Spinner de chargement circulaire */
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #E5E7EB;
+  border-top-color: var(--primary-vert);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 10px;
+}
+
+.success-icon {
+  width: 42px;
+  height: 42px;
+  background-color: #D1FAE5;
+  color: var(--primary-vert);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 auto 10px auto;
+}
+
+/* Animations applicatives */
+@keyframes popCheck {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(-5px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.slide-left { animation: fadeIn 0.6s ease-out forwards; }
+.slide-right { animation: fadeIn 0.6s ease-out forwards; }

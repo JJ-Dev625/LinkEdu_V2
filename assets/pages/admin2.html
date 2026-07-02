@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - LinkEdu</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/admin2.css">
+</head>
+<body>
+
+<div class="menu-burger" id="burger-menu">
+    <i class="fa-solid fa-bars"></i>
+</div>
+
+<nav class="sidebar" id="sidebar">
+    <div class="brand">LinkEdu Admin</div>
+    <div class="admin-profile-sidebar">
+      <img src="../images/pro.png" alt="Admin" class="admin-avatar">
+      <span class="admin-name">Proviseur</span>
+    </div>
+   <ul class="nav-links">
+    <li data-target="dashboard"><i class="fa-solid fa-chart-line"></i> Dashboard</li>
+    <li data-target="traitement"><i class="fa-solid fa-list"></i> Candidatures</li>
+    <li data-target="valides"><i class="fa-solid fa-check-circle"></i> Inscrits</li>
+    <li data-target="refuses"><i class="fa-solid fa-times-circle"></i> Refusés</li>
+    <li data-target="enseignants"><i class="fa-solid fa-chalkboard-user"></i> Enseignants</li>
+</ul>
+
+
+    <button class="btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</button>
+</nav>
+
+<main class="content">
+    <!-- Le contenu sera injecté dynamiquement par JS -->
+</main>
+
+<script src="../js/admin2.js"></script>
+</body>
+</html>

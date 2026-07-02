@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>LinkEdu - Inscription</title>
+  <link rel="stylesheet" href="../css/inscription.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="background-slideshow" id="app-slideshow">
+    <div class="slide-overlay"></div>
+  </div>
+
+  <header class="app-header">
+    <img src="../images/log1.png" alt="Logo LinkEdu" class="app-logo">
+    <span class="app-tagline">L'Excellence Numérique</span>
+  </header>
+
+  <main class="main-container">
+    
+    <div class="welcome-section slide-left">
+      <h1>Rejoindre <span class="text-brand">LinkEdu</span></h1>
+      <p>Créez votre compte pour vous connecter à votre établissement.</p>
+    </div>
+
+    <div class="auth-section slide-right">
+      <form id="register-form" class="auth-form">
+        
+        <div class="input-group">
+          <label for="fullname">Nom et Prénom</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-user input-icon"></i>
+            <input type="text" id="fullname" placeholder="Ex: Jean Junior" required>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="email">Adresse Email</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-envelope input-icon"></i>
+            <input type="email" id="email" placeholder="Ex: contact@email.com" required>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="phone">Numéro de téléphone</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-phone input-icon"></i>
+            <input type="tel" id="phone" placeholder="Ex: 066000000" required>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="role">Vous êtes ?</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-graduation-cap input-icon"></i>
+            <select id="role" class="custom-select" required>
+              <option value="" disabled selected>Sélectionnez votre profil</option>
+              <option value="student">Élève / Étudiant</option>
+              <option value="parent">Parent d'élève</option>
+              <option value="teacher">Enseignant</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="password">Mot de passe</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-lock input-icon"></i>
+            <input type="password" id="password" placeholder="Minimum 8 caractères" required>
+            <i class="fa-solid fa-eye toggle-password" id="eye-icon"></i>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-signup-submit">Créer mon compte</button>
+      </form>
+
+      <div class="divider">ou</div>
+
+      <div class="login-section">
+        <p>Vous avez déjà un compte ?</p>
+        <a href="../../index.html" class="btn-secondary">Se connecter</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>Portail Élève LinkEdu | v1.2.0 | Tous droits réservés</p>
+  </footer>
+
+  <script src="../js/inscription2.js"></script>
+</body>
+</html>

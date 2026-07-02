@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espace Enseignant | LinkEdu</title>
+  <link rel="stylesheet" href="../css/prof.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="background-wrapper"></div>
+
+  <button class="burger-menu" onclick="toggleSidebar()" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+
+  <div class="wrapper">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h2 class="app-title">LinkEdu</h2>
+        <div class="user-profile-sidebar">
+          <img src="../images/sa.png" alt="Photo de profil" class="profile-img">
+          <p class="user-name">D.r AVOME Sara</p>
+          <span class="role-text">Specialiste</span>
+        </div>
+      </div>
+      
+      <nav>
+        <ul>
+          <li class="active"><a href="#"><i class="fa-solid fa-gauge"></i> Tableau de bord</a></li>
+          <li><a href="#"><i class="fa-solid fa-pen-nib"></i> Saisie des notes</a></li>
+          <li><a href="#"><i class="fa-solid fa-calendar-days"></i> Emploi du temps</a></li>
+          <li><a href="#"><i class="fa-solid fa-user-check"></i> Présences</a></li>
+          <li><a href="#"><i class="fa-solid fa-folder-open"></i> Supports cours</a></li>
+        </ul>
+      </nav>
+
+      <footer class="sidebar-footer">
+        <a href="../../index.html"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a>
+      </footer>
+    </aside>
+
+    <main class="main-content">
+      <header class="top-bar">
+        <h1>Tableau de bord</h1>
+      </header>
+
+      <section class="dashboard-grid">
+        <article class="card"><h3>Classes actives</h3><p>4</p></article>
+        <article class="card"><h3>Étudiants</h3><p>120</p></article>
+        <article class="card"><h3>Notes en attente</h3><p>15</p></article>
+      </section>
+    </main>
+  </div>
+
+  <footer class="app-footer">
+    <p>LinkEdu © 2026 | Système d'Information Académique</p>
+  </footer>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

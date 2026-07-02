@@ -1,0 +1,359 @@
+/* ==========================================================================
+   1. CONFIGURATION DES VARIABLES & DESIGN SYSTEM
+   ========================================================================== */
+:root {
+  --primary-vert: #10B881;
+  --dark-bleu: #1F3962;
+  --neutral-gray: #9CA3AF;
+  --dark-gray: #4B5563;
+  --white: #FFFFFF;
+  --black: #050505;
+  --orange-alert: #F59E0B;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: var(--dark-bleu);
+  color: var(--black);
+  height: 100vh;
+  height: 100dvh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden; /* Verrouille le défilement */
+}
+
+/* ==========================================================================
+   2. DIAPORAMA D'ARRIÈRE-PLAN
+   ========================================================================== */
+.background-slideshow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(31, 57, 98, 0.50); 
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  z-index: -1;
+}
+
+/* ==========================================================================
+   3. HEADER / FOOTER AVEC BARRE DE PROGRESSION
+   ========================================================================== */
+.app-header {
+  background-color: var(--white);
+  border-bottom: 2px solid rgba(16, 184, 129, 0.15);
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  flex-shrink: 0;
+}
+
+.app-logo {
+  height: 38px;
+  width: auto;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.progress-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 55%;
+}
+
+.progress-text {
+  font-size: 0.65rem;
+  color: var(--dark-gray);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: #E5E7EB;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 66%; /* Étape 2 sur 3 */
+  height: 100%;
+  background-color: var(--primary-vert);
+}
+
+.app-footer {
+  background-color: rgba(15, 23, 42, 0.95);
+  color: var(--neutral-gray);
+  text-align: center;
+  padding: 8px;
+  font-size: 0.7rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   4. CONTENEUR PRINCIPAL ULTRA COMPACT
+   ========================================================================== */
+.main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 4px 16px;
+  max-width: 420px;
+  margin: 0 auto;
+  width: 100%;
+  overflow: hidden;
+  gap: 6px;
+}
+
+.welcome-section {
+  text-align: center;
+  color: var(--white);
+}
+
+.welcome-section h1 {
+  font-size: 1.25rem;
+  margin-bottom: 0px;
+  font-weight: 700;
+}
+
+.welcome-section .text-brand {
+  color: var(--primary-vert);
+}
+
+.welcome-section p {
+  font-size: 0.72rem;
+  line-height: 1.1;
+  opacity: 0.95;
+}
+
+/* ==========================================================================
+   5. FORMULAIRE EN VERRE DÉPOLI & GRILLES D'ALIGNEMENT
+   ========================================================================== */
+.auth-section {
+  background-color: rgba(255, 255, 255, 0.16); 
+  border-radius: 16px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.documents-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.input-group label, .doc-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.75rem;
+}
+
+.input-wrapper input, 
+.custom-select {
+  width: 100%;
+  padding: 6px 10px 6px 32px !important;
+  border: 1px solid rgba(255, 255, 255, 0.30);
+  border-radius: 6px;
+  font-size: 0.78rem !important;
+  outline: none;
+  color: var(--white);
+  background-color: rgba(255, 255, 255, 0.15);
+  box-sizing: border-box;
+}
+
+.input-wrapper input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.custom-select option {
+  background-color: #1F3962;
+  color: var(--white);
+}
+
+.custom-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  padding-right: 28px;
+}
+
+/* ==========================================================================
+   6. LES DROP-ZONES EN COMPACT GRID (2x2)
+   ========================================================================== */
+.upload-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.upload-card {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.drop-zone {
+  border: 1.5px dashed rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  padding: 8px 6px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.drop-icon {
+  font-size: 1rem;
+  color: var(--white);
+}
+
+.drop-text {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+.file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   7. EFFETS INTERACTIFS & BOUTONS
+   ========================================================================== */
+.input-wrapper input, .custom-select, .drop-zone {
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  will-change: transform;
+}
+
+.input-wrapper input:focus, .custom-select:focus, .drop-zone:hover {
+  border-color: var(--primary-vert) !important;
+  background-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.drop-zone:hover {
+  transform: scale(1.02);
+}
+
+.actions-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.btn-submit-docs {
+  width: 100%;
+  background-color: var(--primary-vert);
+  color: var(--white);
+  border: none;
+  padding: 9px !important;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(16, 184, 129, 0.2);
+}
+
+.btn-submit-docs:hover {
+  background-color: #0D9668;
+}
+
+.btn-back {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--white);
+  text-decoration: none;
+  text-align: center;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.btn-back:hover {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   8. ANIMATIONS APPLICATIVES
+   ========================================================================== */
+.slide-left { animation: slideFromLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.slide-right { animation: slideFromRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+@keyframes slideFromLeft {
+  0% { opacity: 0; transform: translateX(-15px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideFromRight {
+  0% { opacity: 0; transform: translateX(15px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+

@@ -1,0 +1,574 @@
+/* ==========================================================================
+   0. PANNEAU DE SIMULATION (EXCLUSIVE DESIGN POUR LE JURY)
+   ========================================================================== */
+.demo-control-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1E293B;
+  color: #94A3B8;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  z-index: 9999;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.demo-btn {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-free {
+  background-color: #10B881;
+  color: white;
+}
+
+.btn-free:hover { background-color: #059669; }
+
+.btn-locked {
+  background-color: #EF4444;
+  color: white;
+}
+
+.btn-locked:hover { background-color: #DC2626; }
+
+/* ==========================================================================
+   1. CONFIGURATION INTERFACE GLOBALE & RESPONSIVE
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: #1F2937;
+  background-color: #F9FAFB;
+  display: flex;
+  justify-content: center; 
+  min-height: 100vh;
+  padding-top: 50px; /* Espace laissé pour la barre de contrôle */
+}
+
+.dashboard-container {
+  width: 100%;             
+  max-width: 450px;        
+  padding: 24px 20px 100px 20px; 
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  min-height: 100vh;
+  position: relative;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.section-header h3 {
+  font-size: 16px;
+  color: #1F3962;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   2. HEADER CENTRÉ
+   ========================================================================== */
+.dash-header-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 10px;
+  gap: 16px;
+  width: 100%;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.main-dashboard-logo {
+  height: 70px;          
+  width: auto;           
+  max-width: 85%;        
+  object-fit: contain;
+}
+
+.welcome-text-centered {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.welcome-text-centered h2 {
+  font-size: 26px;
+  color: #1F3962;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.user-role {
+  font-size: 13px;
+  color: #6B7280;
+  font-weight: 500;
+  background-color: #F3F4F6;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   3. BLOCS STATISTIQUES
+   ========================================================================== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.stat-card {
+  padding: 16px;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.01);
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-title {
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.stat-sub {
+  font-size: 11px;
+  opacity: 0.85;
+  font-weight: 500;
+}
+
+.card-green {
+  background-color: #E6F7F0;
+  color: #10B881;
+}
+
+.card-blue {
+  background-color: #EBF2FC;
+  color: #1F3962;
+}
+
+/* ==========================================================================
+   4. FIL D'ANNONCES
+   ========================================================================== */
+.announcements-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.view-all {
+  font-size: 12px;
+  color: #10B881;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.announcement-card {
+  display: flex;
+  align-items: flex-start;
+  padding: 14px;
+  border-radius: 12px;
+  gap: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.01);
+}
+
+.warning-alert {
+  background-color: #FFF7ED;
+  border-left: 4px solid #F97316;
+}
+
+.info-alert {
+  background-color: #EFF6FF;
+  border-left: 4px solid #3B82F6;
+}
+
+.announcement-icon {
+  font-size: 18px;
+  padding-top: 2px;
+}
+
+.announcement-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.announcement-content h4 {
+  font-size: 14px;
+  color: #1F2937;
+  font-weight: 600;
+}
+
+.announcement-content p {
+  font-size: 12px;
+  color: #4B5563;
+  line-height: 1.4;
+}
+
+.announcement-time {
+  font-size: 10px;
+  color: #9CA3AF;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   5. NAVIGATION DE LA SEMAINE (ONGLETS JOURS)
+   ========================================================================== */
+.schedule-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.week-tabs {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  background-color: #F3F4F6;
+  padding: 4px;
+  border-radius: 8px;
+}
+
+.tab-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 8px 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6B7280;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  text-align: center;
+}
+
+.tab-btn.active {
+  background-color: #FFFFFF;
+  color: #1F3962;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* ==========================================================================
+   6. LISTE DE L'EMPLOI DU TEMPS
+   ========================================================================== */
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.schedule-item {
+  display: flex;
+  align-items: flex-start;
+  background-color: #FFFFFF;
+  padding: 16px;
+  border-radius: 12px;
+  border-left: 4px solid #E5E7EB;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.01);
+  position: relative;
+}
+
+.schedule-time {
+  font-size: 12px;
+  font-weight: 700;
+  color: #4B5563;
+  width: 50px;
+  min-width: 50px;
+  border-right: 1px solid #F3F4F6;
+  margin-right: 14px;
+  line-height: 1.4;
+}
+
+.schedule-details {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.schedule-details h4 {
+  font-size: 15px;
+  color: #1F2937;
+  font-weight: 700;
+}
+
+.prof-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4B5563;
+}
+
+.course-program {
+  font-size: 11px;
+  color: #9CA3AF;
+  font-style: italic;
+  line-height: 1.3;
+  margin-top: 2px;
+}
+
+.active-course {
+  border-left-color: #10B881;
+  background-color: #F0FDF4;
+}
+
+.active-course .prof-name {
+  color: #10B881;
+}
+
+.live-tag {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: #10B881;
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   7. NAV BAR BASSE FIXE
+   ========================================================================== */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%); 
+  width: 100%;
+  max-width: 450px;            
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.04);
+  border-top: 1px solid #E5E7EB;
+  z-index: 100;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #9CA3AF;
+  gap: 4px;
+  width: 25%;
+}
+
+.nav-icon {
+  font-size: 20px;
+}
+
+.nav-label {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.nav-item.active {
+  color: #10B881; 
+}
+
+/* ==========================================================================
+   8. BANDEAU DE TIMING & SYSTÈME DE LOCK DYNAMIQUE
+   ========================================================================== */
+.restriction-banner {
+  background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); 
+  border: 1px solid #FCD34D;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.12);
+  transition: all 0.3s ease-in-out;
+}
+
+.banner-text strong {
+  font-size: 13px;
+  color: #92400E;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.banner-text p {
+  font-size: 11px;
+  color: #B45309;
+  line-height: 1.3;
+}
+
+.timer-highlight {
+  font-family: monospace;
+  font-weight: 800;
+  font-size: 12px;
+  background-color: #1F3962;
+  color: #FFFFFF;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 2px;
+  white-space: nowrap;
+}
+
+.banner-btn {
+  background-color: #D97706;
+  color: white;
+  text-decoration: none;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+/* LE SYSTÈME DE BLOCAGE VISUEL */
+.locked {
+  position: relative;
+}
+
+.locked > *:not(.locked-overlay) {
+  filter: blur(5px) !important;
+  opacity: 0.5 !important;
+  pointer-events: none;
+}
+
+.locked-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.locked-overlay span {
+  background-color: #1F3962;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   9. RUBRIQUE TÉLÉCHARGEMENTS
+   ========================================================================== */
+.download-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.download-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.download-item {
+  display: flex;
+  align-items: center;
+  background-color: #FFFFFF;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+  gap: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.doc-icon {
+  font-size: 22px;
+  background-color: #F3F4F6;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.doc-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 2px;
+}
+
+.doc-info h4 {
+  font-size: 13px;
+  color: #1F2937;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.doc-info p {
+  font-size: 11px;
+  color: #9CA3AF;
+  margin: 0;
+}
+
+.btn-download-icon {
+  font-size: 18px;
+  text-decoration: none;
+  background-color: #EBF2FC;
+  color: #1F3962;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.btn-download-icon:hover {
+  background-color: #1F3962;
+  color: #FFFFFF;
+}

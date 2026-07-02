@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>LinkEdu - Dossier d'Inscription</title>
+  <link rel="stylesheet" href="../css/Tele.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="background-slideshow" id="app-slideshow">
+    <div class="slide-overlay"></div>
+  </div>
+
+  <header class="app-header">
+    <div class="header-left">
+      <img src="../images/log1.png" alt="Logo LinkEdu" class="app-logo">
+    </div>
+    <div class="progress-container">
+      <span class="progress-text">Étape 2 sur 3 : Infos & Pièces</span>
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+    </div>
+  </header>
+
+  <main class="main-container">
+    
+    <div class="welcome-section slide-left">
+      <h1>Compléter mon <span class="text-brand">Dossier</span></h1>
+      <p>Renseignez vos informations académiques et chargez vos justificatifs (Max 5 Mo par fichier).</p>
+    </div>
+
+    <div class="auth-section slide-right">
+      <form id="upload-form" class="documents-form">
+        
+        <div class="form-grid-2">
+          <div class="input-group">
+            <label for="study-level">Niveau d'études</label>
+            <div class="input-wrapper">
+              <i class="fa-solid fa-layer-group input-icon"></i>
+              <select id="study-level" class="custom-select" required>
+                <option value="" disabled selected>Niveau</option>
+                <option value="primaire">Primaire</option>
+                <option value="secondaire">Collège / Lycée</option>
+                <option value="superieur">Supérieur</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="school-origin">École de provenance</label>
+            <div class="input-wrapper">
+              <i class="fa-solid fa-school input-icon"></i>
+              <input type="text" id="school-origin" placeholder="Ex: UOB" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="input-group">
+            <label for="prev-class">Classe précédente</label>
+            <div class="input-wrapper">
+              <i class="fa-solid fa-arrow-left-long input-icon"></i>
+              <select id="prev-class" class="custom-select" required disabled>
+                <option value="" disabled selected>Classe</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="target-class">Classe demandée</label>
+            <div class="input-wrapper">
+              <i class="fa-solid fa-graduation-cap input-icon"></i>
+              <select id="target-class" class="custom-select" required disabled>
+                <option value="" disabled selected>Visée</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="upload-grid">
+          
+          <div class="upload-card">
+            <label class="doc-label">Acte de naissance / ID *</label>
+            <div class="drop-zone">
+              <i class="fa-solid fa-address-card drop-icon"></i>
+              <span class="drop-text">Ajouter</span>
+              <input type="file" id="file-id" class="file-input" accept=".pdf,.jpeg,.jpg,.png" required>
+            </div>
+          </div>
+
+          <div class="upload-card">
+            <label class="doc-label">Dernier Bulletin *</label>
+            <div class="drop-zone">
+              <i class="fa-solid fa-file-invoice drop-icon"></i>
+              <span class="drop-text">Ajouter</span>
+              <input type="file" id="file-bulletin" class="file-input" accept=".pdf,.jpeg,.jpg,.png" required>
+            </div>
+          </div>
+
+          <div class="upload-card">
+            <label class="doc-label">Certificat Médical *</label>
+            <div class="drop-zone">
+              <i class="fa-solid fa-file-medical drop-icon"></i>
+              <span class="drop-text">Ajouter</span>
+              <input type="file" id="file-medical" class="file-input" accept=".pdf,.jpeg,.jpg,.png" required>
+            </div>
+          </div>
+
+          <div class="upload-card">
+            <label class="doc-label">Photo d'identité *</label>
+            <div class="drop-zone">
+              <i class="fa-solid fa-camera drop-icon"></i>
+              <span class="drop-text">Prendre</span>
+              <input type="file" id="file-photo" class="file-input" accept=".jpeg,.jpg,.png" required>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="actions-section">
+          <button type="submit" class="btn-submit-docs">Valider mon dossier</button>
+          <a href="./dashboard1.html" class="btn-back">Plus tard, retourner au tableau de bord</a>
+        </div>
+      </form>
+    </div>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>Portail Élève LinkEdu | v1.2.0 | Tous droits réservés</p>
+  </footer>
+
+  <script src="../js/Tele2.js"></script>
+</body>
+</html>

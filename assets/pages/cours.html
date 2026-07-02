@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkEdu - Bibliothèque Numérique</title>
+  <link rel="stylesheet" href="../css/cours.css">
+</head>
+<body>
+
+  <div class="demo-control-panel">
+    <span>Visualisation Jury :</span>
+    <button id="btn-sim-free" class="demo-btn btn-free">🔓 Forcer État Libre</button>
+    <button id="btn-sim-locked" class="demo-btn btn-locked">🔒 Forcer Verrouillage</button>
+  </div>
+
+  <div class="dashboard-container">
+    
+    <div class="restriction-banner" id="promo-banner">
+      <div class="banner-text">
+        <strong>Échéance de réinscription active !</strong>
+        <p>Verrouillage des cours dans : <span id="countdown-timer" class="timer-highlight">--j --h --m --s</span></p>
+      </div>
+      <a href="./paiement.html" class="banner-btn">Régler</a>
+    </div>
+
+    <header class="courses-header">
+      <h2>Médiathèque 📚</h2>
+      <p class="subtitle">Accédez à vos supports de cours numériques</p>
+    </header>
+
+    <div class="filter-tabs">
+      <button class="filter-btn active" data-filter="all">Tout</button>
+      <button class="filter-btn" data-filter="pdf">📄 Livres & PDF</button>
+      <button class="filter-btn" data-filter="video">🎥 Vidéos</button>
+    </div>
+
+    <main class="library-grid" id="sec-library">
+      
+      <div class="course-card" data-type="video">
+        <div class="card-preview video-preview">
+          <span class="format-badge badge-video">🎥 VIDÉO</span>
+          <div class="play-icon">▶</div>
+        </div>
+        <div class="card-body">
+          <span class="course-tag">Technologie</span>
+          <h3>Bases de JavaScript : Les Fonctions</h3>
+          <p class="course-author">Par M. Nguema • 18 min</p>
+          <div class="card-actions">
+            <a href="#" class="action-link btn-play">Visionner</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-type="pdf">
+        <div class="card-preview pdf-preview">
+          <span class="format-badge badge-pdf">📄 PDF</span>
+          <span class="doc-file-icon">📘</span>
+        </div>
+        <div class="card-body">
+          <span class="course-tag">Design System</span>
+          <h3>Guide Complet UI/UX sur Figma</h3>
+          <p class="course-author">Par Mme Bikoro • 4.2 Mo</p>
+          <div class="card-actions">
+            <a href="#" class="action-link btn-read">Lire le cours</a>
+            <a href="#" class="download-icon-btn" title="Télécharger">📥</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-type="video">
+        <div class="card-preview video-preview algl-bg">
+          <span class="format-badge badge-video">🎥 VIDÉO</span>
+          <div class="play-icon">▶</div>
+        </div>
+        <div class="card-body">
+          <span class="course-tag">Algorithmique</span>
+          <h3>Comprendre les structures conditionnelles</h3>
+          <p class="course-author">Par M. Nguema • 25 min</p>
+          <div class="card-actions">
+            <a href="#" class="action-link btn-play">Visionner</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-type="pdf">
+        <div class="card-preview pdf-preview net-bg">
+          <span class="format-badge badge-pdf">📄 PDF</span>
+          <span class="doc-file-icon">⚙️</span>
+        </div>
+        <div class="card-body">
+          <span class="course-tag">Réseau & Web</span>
+          <h3>Architecture Client-Serveur & API</h3>
+          <p class="course-author">Support de cours • 1.8 Mo</p>
+          <div class="card-actions">
+            <a href="#" class="action-link btn-read">Lire le cours</a>
+            <a href="#" class="download-icon-btn" title="Télécharger">📥</a>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <nav class="bottom-nav">
+      <a href="./dashboard1.html" class="nav-item">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Accueil</span>
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-icon">📂</span>
+        <span class="nav-label">Documents</span>
+      </a>
+      <a href="#" class="nav-item active">
+        <span class="nav-icon">📚</span>
+        <span class="nav-label">Cours</span>
+      </a>
+      <a href="./prof.html" class="nav-item">
+        <span class="nav-icon">👤</span>
+        <span class="nav-label">Profil</span>
+      </a>
+    </nav>
+
+  </div>
+  <script src="../js/cours.js"></script>
+</body>
+</html>

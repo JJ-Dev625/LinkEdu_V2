@@ -1,0 +1,326 @@
+/* ==========================================================================
+   1. CONFIGURATION DES VARIABLES & DESIGN SYSTEM
+   ========================================================================== */
+:root {
+  --primary-vert: #10B881;
+  --dark-bleu: #1F3962;
+  --neutral-gray: #9CA3AF;
+  --dark-gray: #4B5563;
+  --white: #FFFFFF;
+  --black: #050505;
+  --orange-alert: #F59E0B;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: var(--dark-bleu);
+  color: var(--black);
+  height: 100vh;
+  height: 100dvh; /* Bloque la hauteur sur mobile sans prendre en compte les barres de navigation */
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden; /* Verrouille strictement tout défilement vertical */
+}
+
+/* ==========================================================================
+   2. DIAPORAMA D'ARRIÈRE-PLAN
+   ========================================================================== */
+.background-slideshow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(31, 57, 98, 0.50); 
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  z-index: -1;
+}
+
+/* ==========================================================================
+   3. HEADER / FOOTER APPLICATION
+   ========================================================================== */
+.app-header {
+  background-color: var(--white);
+  border-bottom: 2px solid rgba(16, 184, 129, 0.15);
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  flex-shrink: 0;
+}
+
+.app-logo {
+  height: 42px;
+  width: auto;
+  border-radius: 10px;
+  background-color: var(--white);
+  padding: 4px;
+  box-shadow: 
+    3px 3px 8px rgba(0, 0, 0, 0.08), 
+    -3px -3px 8px rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(229, 231, 235, 0.6);
+  object-fit: contain;
+}
+
+.app-tagline {
+  color: var(--dark-bleu);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.app-footer {
+  background-color: rgba(15, 23, 42, 0.95);
+  color: var(--neutral-gray);
+  text-align: center;
+  padding: 8px;
+  font-size: 0.7rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   4. CONTENEUR PRINCIPAL OPTIMISÉ POUR COPIE MOBILE SANS SCROLL
+   ========================================================================== */
+.main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 4px 16px; /* Espace vertical resserré au maximum */
+  max-width: 420px;
+  margin: 0 auto;
+  width: 100%;
+  overflow: hidden;
+  gap: 8px;
+}
+
+.welcome-section {
+  text-align: center;
+  color: var(--white);
+}
+
+.welcome-section h1 {
+  font-size: 1.3rem; /* Taille réduite pour laisser respirer le bas */
+  margin-bottom: 0px;
+  font-weight: 700;
+}
+
+.welcome-section .text-brand {
+  color: var(--primary-vert);
+}
+
+.welcome-section p {
+  font-size: 0.75rem;
+  line-height: 1.1;
+  opacity: 0.95;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   5. BLOC FORMULAIRE EN VERRE DÉPOLI (GLASSMORPHISM)
+   ========================================================================== */
+.auth-section {
+  background-color: rgba(255, 255, 255, 0.16); 
+  border-radius: 16px;
+  padding: 12px 16px; /* Moins d'espace interne */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* Resserre les 5 groupes d'inputs */
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.7rem; /* Plus discret */
+  font-weight: 600;
+  color: var(--white);
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.8rem;
+}
+
+/* Style commun des champs (hauteur ultra-calibrée) */
+.input-wrapper input, 
+.custom-select {
+  width: 100%;
+  padding: 7px 12px 7px 36px !important; /* Moins épais pour éviter le scroll */
+  border: 1px solid rgba(255, 255, 255, 0.30);
+  border-radius: 8px;
+  font-size: 0.8rem !important;
+  outline: none;
+  color: var(--white);
+  background-color: rgba(255, 255, 255, 0.15);
+  box-sizing: border-box;
+}
+
+.input-wrapper input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Menu de sélection stylisé */
+.custom-select option {
+  background-color: #1F3962;
+  color: var(--white);
+}
+
+.custom-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+  padding-right: 38px;
+}
+
+/* Icône œil pour le mot de passe */
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  padding: 4px;
+  font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   6. BOUTONS & REDIRECTIONS (COHÉRENCE ACCUEIL)
+   ========================================================================== */
+.btn-signup-submit {
+  width: 100%;
+  background-color: var(--primary-vert);
+  color: var(--white);
+  border: none;
+  padding: 9px !important;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 2px;
+  box-shadow: 0 4px 12px rgba(16, 184, 129, 0.2);
+}
+
+.btn-signup-submit:hover {
+  background-color: #0D9668;
+}
+
+.divider {
+  text-align: center;
+  margin: 4px 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.75rem;
+}
+
+.login-section {
+  text-align: center;
+}
+
+.login-section p {
+  font-size: 0.75rem;
+  color: var(--white);
+  margin-bottom: 4px;
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  display: block;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  text-decoration: none;
+  padding: 7px !important;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   7. EFFETS DE FOCUS ET TRANSITIONS INTELLIGENTES
+   ========================================================================== */
+.input-wrapper input, 
+.custom-select {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.2s ease, 
+              background-color 0.2s ease,
+              box-shadow 0.2s ease !important;
+  will-change: transform;
+}
+
+.input-wrapper input:focus,
+.custom-select:focus {
+  transform: scale(1.015);
+  border-color: var(--primary-vert) !important;
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 4px 14px rgba(16, 184, 129, 0.25) !important;
+}
+
+/* ==========================================================================
+   8. ANIMATIONS APPLICATIVES À L'OUVERTURE
+   ========================================================================== */
+.slide-left {
+  animation: slideFromLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.slide-right {
+  animation: slideFromRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideFromLeft {
+  0% { opacity: 0; transform: translateX(-20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideFromRight {
+  0% { opacity: 0; transform: translateX(20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}

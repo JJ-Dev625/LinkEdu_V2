@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>LinkEdu - Règlement Scolarité</title>
+  <link rel="stylesheet" href="../css/paiement.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="background-slideshow" id="app-slideshow">
+    <div class="slide-overlay"></div>
+  </div>
+
+  <header class="app-header">
+    <div class="header-left">
+      <img src="../images/log1.png" alt="Logo LinkEdu" class="app-logo">
+    </div>
+    <div class="progress-container">
+      <span class="progress-text">Étape 3 sur 3 : Règlement</span>
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+    </div>
+  </header>
+
+  <main class="main-container">
+    
+    <div class="welcome-section slide-left">
+      <h1>Finaliser mon <span class="text-brand">Inscription</span></h1>
+      <p>Procédez au règlement pour activer l'accès complet à votre espace scolaire.</p>
+    </div>
+
+    <div class="auth-section slide-right">
+      
+      <div class="reinscription-box">
+        <label class="checkbox-label">
+          <input type="checkbox" id="is-reinscription"> 
+          S'agit-il d'une réinscription ?
+        </label>
+        
+        <div id="matricule-container" class="matricule-wrapper">
+          <div class="input-wrapper">
+            <i class="fa-solid fa-id-card input-icon"></i>
+            <input type="text" id="student-matricule" placeholder="Matricule de l'élève (Ex: 241X99)">
+          </div>
+          <button type="button" id="btn-verifier-matricule" class="btn-verify">Vérifier le dossier</button>
+        </div>
+      </div>
+
+      <div class="payment-summary">
+        <h4>Récapitulatif <span id="summary-badge"></span></h4>
+        <div class="summary-item">
+          <span id="scolarite-label">Frais de scolarité</span>
+          <span class="price" id="scolarite-price">-- --- FCFA</span>
+        </div>
+        <div class="summary-item total">
+          <span>Total à régler</span>
+          <span class="price" id="total-price">-- --- FCFA</span>
+        </div>
+      </div>
+
+      <form id="payment-form" class="payment-method-form">
+        <label class="method-label">Mode de paiement :</label>
+        
+        <div class="method-options">
+          <div class="provider-card active" data-provider="airtel">
+            <img src="../images/a.jpg" alt="Airtel Money" class="method-logo">
+            <span>Airtel Money</span>
+          </div>
+
+          <div class="provider-card" data-provider="moov">
+            <img src="../images/m.jpg" alt="Moov Money" class="method-logo">
+            <span>Moov Money</span>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="phone-input">Numéro de téléphone Airtel ou Moov</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-phone input-icon"></i>
+            <input type="tel" id="phone-input" placeholder="Ex: 077 00 00 00" required>
+          </div>
+        </div>
+
+        <div class="actions-section">
+          <button type="submit" id="main-submit-btn" class="btn-pay">Payer maintenant</button>
+          <a href="./dashboard1.html" class="btn-back">Plus tard, retourner au tableau de bord</a>
+        </div>
+      </form>
+    </div>
+
+  </main>
+
+  <div id="payment-modal" class="payment-overlay hidden">
+    <div class="modal-content">
+      <div id="modal-status"></div>
+      
+      <form id="pin-form" class="pin-entry-form">
+        <input type="password" id="pin-input" maxlength="4" placeholder="••••" autocomplete="off">
+        <div class="modal-buttons">
+          <button type="button" id="cancel-btn" class="btn-modal-cancel">Annuler</button>
+          <button type="submit" class="btn-modal-confirm">Confirmer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <p>Portail Élève LinkEdu | v1.2.0 | Tous droits réservés</p>
+  </footer>
+
+  <script src="../js/paiement2.js"></script>
+</body>
+</html>

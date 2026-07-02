@@ -1,0 +1,223 @@
+/* ==========================================================================
+   1. CONFIGURATION & DESIGN SYSTEM
+   ========================================================================== */
+:root {
+  --primary-vert: #10B881;
+  --dark-bleu: #1F3962;
+  --neutral-gray: #9CA3AF;
+  --white: #FFFFFF;
+  --black: #050505;
+  --orange-alert: #F59E0B;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: var(--dark-bleu);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+body::-webkit-scrollbar { display: none; }
+
+/* ==========================================================================
+   2. DIAPORAMA D'ARRIÈRE-PLAN
+   ========================================================================== */
+.background-slideshow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(31, 57, 98, 0.50);
+  backdrop-filter: blur(1px);
+  z-index: -1;
+}
+
+/* ==========================================================================
+   3. HEADER, FOOTER & TAGLINE
+   ========================================================================== */
+.app-header {
+  background: var(--white);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
+
+.app-logo { height: 35px; width: auto; object-fit: contain; }
+
+.app-tagline {
+  color: var(--dark-bleu);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-left: 3px solid var(--primary-vert);
+  padding-left: 12px;
+}
+
+.app-footer {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--neutral-gray);
+  padding: 15px;
+  text-align: center;
+  margin-top: auto;
+}
+.footer-title { font-weight: 600; color: var(--white); font-size: 0.8rem; margin-bottom: 4px; }
+.footer-meta { font-size: 0.7rem; opacity: 0.8; }
+
+/* ==========================================================================
+   4. CONTENEUR PRINCIPAL
+   ========================================================================== */
+.main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  gap: 15px;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.welcome-section { text-align: center; color: var(--white); }
+.welcome-section h1 { font-size: 1.4rem; margin-bottom: 5px; }
+.welcome-section h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--primary-vert);
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+.auth-section {
+  background: rgba(255, 255, 255, 0.20);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  width: 100%;
+}
+
+.auth-section h3 { color: var(--white); font-size: 1.1rem; margin-bottom: 15px; text-align: center; }
+
+/* SÉLECTEUR DE PROFIL */
+.profile-selector {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.profile-card {
+  padding: 8px 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.7rem;
+  text-align: center;
+  transition: 0.3s;
+}
+.profile-card.active { background: var(--primary-vert); border-color: var(--primary-vert); }
+
+/* FORMULAIRE & ICONE OEIL */
+.input-group { margin-bottom: 12px; }
+.input-group label { display: block; font-size: 0.75rem; color: white; margin-bottom: 4px; }
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%); /* Centre l'icône parfaitement verticalement */
+  color: rgba(255, 255, 255, 0.6);
+  pointer-events: none; /* Empêche l'icône d'interférer avec le clic dans le champ */
+  font-size: 1rem;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 12px 35px 12px 40px; /* Assure assez d'espace à gauche pour l'icône */
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  color: rgba(255,255,255,0.7);
+  padding: 5px;
+}
+
+.forgot-password {
+  display: block;
+  text-align: right;
+  font-size: 0.75rem;
+  color: var(--white);
+  text-decoration: none;
+  margin-bottom: 15px;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+.forgot-password:hover { opacity: 1; text-decoration: underline; }
+
+.btn-login {
+  width: 100%;
+  background: var(--dark-bleu);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(16, 184, 129, 0.15);
+}
+.btn-login:hover { background: #172B4D; box-shadow: 0 0 15px rgba(16, 184, 129, 0.4); }
+
+/* CAMPAGNE D'INSCRIPTION */
+.signup-box {
+  margin-top: 15px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+  padding-top: 10px;
+  text-align: center;
+}
+.academic-year { font-size: 0.7rem; color: var(--orange-alert); margin-bottom: 8px; text-transform: uppercase; }
+.btn-signup { 
+  display: block; background: var(--primary-vert); color: white; padding: 8px; 
+  border-radius: 6px; text-decoration: none; font-size: 0.8rem; 
+}

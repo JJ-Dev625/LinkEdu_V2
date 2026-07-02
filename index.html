@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkEdu - Accueil</title>
+  <link rel="stylesheet" href="./assets/css/style2.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="background-slideshow" id="app-slideshow">
+    <div class="slide-overlay"></div>
+  </div>
+
+  <header class="app-header">
+    <img src="./assets/images/log1.png" alt="Logo LinkEdu" class="app-logo">
+    <span class="app-tagline">L'Excellence Numérique</span>
+  </header>
+
+  <main class="main-container">
+    
+    <div class="welcome-section">
+      <h1>Bienvenue sur <span class="text-brand">LinkEdu</span></h1>
+      <p>Votre scolarité à portée de main. Connectez-vous pour accéder à votre espace.</p>
+    </div>
+
+    <div class="auth-section">
+      <form class="login-form">
+        <h3>Connexion à mon compte</h3>
+        
+        <div class="profile-selector">
+          <div class="profile-card active" data-role="eleve" onclick="selectRole(this)">Élève</div>
+          <div class="profile-card" data-role="enseignant" onclick="selectRole(this)">Enseignant</div>
+          <div class="profile-card" data-role="parent" onclick="selectRole(this)">Parent</div>
+          <div class="profile-card" data-role="admin" onclick="selectRole(this)">Admin</div>
+        </div>
+
+        <div class="input-group">
+          <label>Matricule / Email</label>
+          <div class="input-wrapper">
+            <i class="input-icon fa fa-user"></i> 
+            <input type="text" id="identifier" placeholder="Ex: LE-2026-045">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label>Mot de passe</label>
+          <div class="input-wrapper">
+            <i class="input-icon fa fa-lock"></i>
+            <input type="password" id="password" placeholder="********">
+            <i class="toggle-password fa fa-eye" id="eye-icon"></i>
+          </div>
+        </div>
+
+        <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+        <button type="submit" class="btn-login">Se connecter</button>
+      </form>
+
+      <div class="signup-box">
+        <p class="academic-year">📢 Campagne d'Inscription Ouverte</p>
+        <a href="./assets/pages/inscription.html" class="btn-signup">
+          <i class="fa-solid fa-graduation-cap"></i> S'inscrire maintenant
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <p class="footer-title">LinkEdu | Système d'Information Académique</p>
+    <p class="footer-meta">© 2026 École 241 | Propulsé pour l'Excellence Numérique</p>
+  </footer>
+
+  <script src="./assets/js/script2.js"></script>
+</body>
+</html>
