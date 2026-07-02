@@ -57,10 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("userRole", selectedRole);
 
       const routes = {
-        admin: "../pages/admin2.html",
-        enseignant: "../pages/prof.html",
-        parent: "../pages/parent.html",
-        eleve: "../pages/dashboard1.html",
+        admin: "./assets/pages/admin2.html",
+        enseignant: "./assets/pages/prof.html",
+        parent: "./assets/pages/parent.html",
+        eleve: "./assets/pages/dashboard1.html",
       };
 
       window.location.href = routes[selectedRole] || "../../index.html";
@@ -70,12 +70,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- 4. DIAPORAMA D'ARRIÈRE-PLAN ---
   const slideshowContainer = document.getElementById("app-slideshow");
   const imagesList = [
-    "../images/etu1.jpg",
-    "../images/etu2.jpg",
-    "../images/el1.jpg",
-    "../images/el2.jpg",
-    "../images/ens.jpg",
-    "../images/pri1.jpg",
+    "./assets/images/etu1.jpg",
+    "./assets/images/etu2.jpg",
+    "./assets/images/el1.jpg",
+    "./assets/images/el2.jpg",
+    "./assets/images/ens.jpg",
+    "./assets/images/pri1.jpg",
   ];
 
   if (slideshowContainer) {
